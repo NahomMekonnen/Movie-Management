@@ -13,6 +13,12 @@ namespace Movie_Management
 {
     public partial class MovieWindow : Form
     {
+
+        private Image emptyStarImage;
+        private Image filledStarImage;
+        private static int starCount = 5;
+        private int currentRating = 0;
+        private PictureBox[] starImages = new PictureBox[starCount];
         private string movieName,tableName;
         Movie movie=new Movie();
         DatabaseConnection d=new DatabaseConnection();
@@ -63,47 +69,76 @@ namespace Movie_Management
             txtDescription.Text = movie.Description;
             lblDirector.Text += movie.Director;
             lblGenre.Text += movie.Genre;
-            lblReleaseDate.Text += movie.ReleaseDate.ToString();
+            lblReleaseDate.Text += movie.ReleaseDate.ToShortDateString();
             lblRate.Text += movie.Rating;
             if (tableName == "Movies")
             {
                 btnPress.Text = "Add To Watchlist";
-                btnPress.Click += btnMovies_Click;
               
-            }else if (tableName == "Watchlist")
+                btnPress.Click += btnMovies_Click;
+                btnPress.IconChar = FontAwesome.Sharp.IconChar.Plus;
+                btnPress.IconColor = Color.Gainsboro;
+          
+
+                btnPress.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+                btnPress2.Visible = false;
+
+               
+
+            }
+            else if (tableName == "Watchlist")
             {
                 btnPress.Text = "Add to Watched";
                 btnPress.Click += btnWatchlist_Click;
+                btnPress.IconChar = FontAwesome.Sharp.IconChar.Plus;
+                btnPress.IconColor = Color.Gainsboro;
+             
+                btnPress.TextImageRelation = TextImageRelation.ImageBeforeText;
+
+                btnPress2.Text = "Remove";
+                btnPress2.Click += btnPress2_Click;
+                btnPress2.IconChar = FontAwesome.Sharp.IconChar.Remove;
+                btnPress2.IconColor = Color.Gainsboro;
+
+                btnPress2.TextImageRelation = TextImageRelation.ImageBeforeText;
             }
             else if (tableName == "Watched")
             {
-                btnPress.Visible = false;
+                btnPress.Text = "Remove";
+                btnPress.Click += btnWatch_Click;
+                btnPress.IconChar = FontAwesome.Sharp.IconChar.Remove;
+                btnPress.IconColor = Color.Gainsboro;
+                btnPress.IconSize = 50;
+                btnPress.TextImageRelation = TextImageRelation.ImageBeforeText;
             }
-            btnPress.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            btnPress.IconColor = Color.Gainsboro;
-            btnPress.TextImageRelation = TextImageRelation.ImageBeforeText;
+
             
 
         }
+        private void btnPress2_Click(object sender, EventArgs e)
+        {
+            d.DeleteMovie(movieName, tableName);
+        }
         private void btnMovies_Click(object sender, EventArgs e)
         {
+            
             d.InsertMovies("Watchlist", movie);
             
 
         }
         private void btnWatchlist_Click(object sender, EventArgs e)
         {
-            d.InsertMovies("Watched", movie);
+                d.InsertMovies("Watched", movie);
             d.DeleteMovie(movieName, tableName);
 
         }
+        private void btnWatch_Click(object sender, EventArgs e)
+        {
+            d.DeleteMovie(movieName, tableName);
+        }
 
 
-        private Image emptyStarImage;
-        private Image filledStarImage;
-        private static int starCount = 5;
-        private int currentRating = 0;
-        private PictureBox[] starImages = new PictureBox[starCount];
 
         private void rate_Paint(object sender, PaintEventArgs e)
         {
@@ -175,6 +210,21 @@ namespace Movie_Management
             home.Visible= true;
             this.Hide();
             
+        }
+
+        private void lblReleaseDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDirector_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

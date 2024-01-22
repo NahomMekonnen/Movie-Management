@@ -45,6 +45,7 @@
             this.picBox = new System.Windows.Forms.PictureBox();
             this.lblRate = new System.Windows.Forms.Label();
             this.lblReleaseDate = new System.Windows.Forms.Label();
+            this.btnPress2 = new FontAwesome.Sharp.IconButton();
             this.panelTaskBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.panelDescription.SuspendLayout();
@@ -126,18 +127,19 @@
             this.lblDirector.AutoSize = true;
             this.lblDirector.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDirector.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblDirector.Location = new System.Drawing.Point(32, 406);
+            this.lblDirector.Location = new System.Drawing.Point(12, 326);
             this.lblDirector.Name = "lblDirector";
             this.lblDirector.Size = new System.Drawing.Size(111, 27);
             this.lblDirector.TabIndex = 24;
             this.lblDirector.Text = "Director:  ";
+            this.lblDirector.Click += new System.EventHandler(this.lblDirector_Click);
             // 
             // lblGenre
             // 
             this.lblGenre.AutoSize = true;
             this.lblGenre.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGenre.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblGenre.Location = new System.Drawing.Point(423, 406);
+            this.lblGenre.Location = new System.Drawing.Point(392, 326);
             this.lblGenre.Name = "lblGenre";
             this.lblGenre.Size = new System.Drawing.Size(90, 27);
             this.lblGenre.TabIndex = 23;
@@ -151,18 +153,19 @@
             this.txtDescription.Location = new System.Drawing.Point(27, 102);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(686, 282);
+            this.txtDescription.Size = new System.Drawing.Size(686, 199);
             this.txtDescription.TabIndex = 22;
             // 
             // panelFooter
             // 
+            this.panelFooter.Controls.Add(this.btnPress2);
             this.panelFooter.Controls.Add(this.btnPress);
             this.panelFooter.Controls.Add(this.label1);
             this.panelFooter.Controls.Add(this.rate);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 489);
+            this.panelFooter.Location = new System.Drawing.Point(0, 403);
             this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(744, 100);
+            this.panelFooter.Size = new System.Drawing.Size(744, 186);
             this.panelFooter.TabIndex = 21;
             // 
             // btnPress
@@ -176,7 +179,7 @@
             this.btnPress.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnPress.Location = new System.Drawing.Point(3, 10);
             this.btnPress.Name = "btnPress";
-            this.btnPress.Size = new System.Drawing.Size(232, 71);
+            this.btnPress.Size = new System.Drawing.Size(232, 79);
             this.btnPress.TabIndex = 22;
             this.btnPress.UseVisualStyleBackColor = true;
             this.btnPress.Click += new System.EventHandler(this.btnPress_Click);
@@ -186,7 +189,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(288, 10);
+            this.label1.Location = new System.Drawing.Point(288, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 30);
             this.label1.TabIndex = 21;
@@ -194,7 +197,7 @@
             // 
             // rate
             // 
-            this.rate.Location = new System.Drawing.Point(489, 18);
+            this.rate.Location = new System.Drawing.Point(489, 104);
             this.rate.Margin = new System.Windows.Forms.Padding(4);
             this.rate.Name = "rate";
             this.rate.Size = new System.Drawing.Size(251, 78);
@@ -226,7 +229,7 @@
             this.lblRate.AutoSize = true;
             this.lblRate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRate.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblRate.Location = new System.Drawing.Point(32, 442);
+            this.lblRate.Location = new System.Drawing.Point(12, 373);
             this.lblRate.Name = "lblRate";
             this.lblRate.Size = new System.Drawing.Size(76, 27);
             this.lblRate.TabIndex = 25;
@@ -237,11 +240,28 @@
             this.lblReleaseDate.AutoSize = true;
             this.lblReleaseDate.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReleaseDate.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblReleaseDate.Location = new System.Drawing.Point(338, 442);
+            this.lblReleaseDate.Location = new System.Drawing.Point(307, 373);
             this.lblReleaseDate.Name = "lblReleaseDate";
             this.lblReleaseDate.Size = new System.Drawing.Size(175, 27);
             this.lblReleaseDate.TabIndex = 26;
             this.lblReleaseDate.Text = "Date Released:  ";
+            this.lblReleaseDate.Click += new System.EventHandler(this.lblReleaseDate_Click);
+            // 
+            // btnPress2
+            // 
+            this.btnPress2.FlatAppearance.BorderSize = 0;
+            this.btnPress2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPress2.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPress2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnPress2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnPress2.IconColor = System.Drawing.Color.Black;
+            this.btnPress2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPress2.Location = new System.Drawing.Point(3, 104);
+            this.btnPress2.Name = "btnPress2";
+            this.btnPress2.Size = new System.Drawing.Size(232, 79);
+            this.btnPress2.TabIndex = 23;
+            this.btnPress2.UseVisualStyleBackColor = true;
+            this.btnPress2.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // MovieWindow
             // 
@@ -284,5 +304,6 @@
         private System.Windows.Forms.Label lblDirector;
         private System.Windows.Forms.Label lblReleaseDate;
         private System.Windows.Forms.Label lblRate;
+        private FontAwesome.Sharp.IconButton btnPress2;
     }
 }

@@ -101,6 +101,8 @@ namespace Movie_Management
             childForm.Show();
 
             lblTitleChildForm.Text = childForm.Text;
+        
+            
 
         }
        
@@ -198,6 +200,11 @@ namespace Movie_Management
         private void btnReleaseDate_Click(object sender, EventArgs e)
         {
             OpenChildForm(new AllMovies(tableName));
+
+        }
+
+        private void panelDesktop_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

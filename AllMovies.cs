@@ -98,7 +98,7 @@ namespace Movie_Management
             Label labelTitle;
             labelTitle = new Label();
             labelTitle.Name = String.Format("LblMovieTitle{0}", movie.Id);
-            labelTitle.Text = movie.Title;
+                labelTitle.Text = movie.Title;
             labelTitle.Location = new Point(12, 175);
             labelTitle.ForeColor = Color.Gainsboro;
             labelTitle.Font = new System.Drawing.Font("Microsoft YaHei Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

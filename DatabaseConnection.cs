@@ -30,7 +30,7 @@ namespace Movie_Management
                     string sql = "INSERT INTO " + tableName + " (Title,Genre,Director,ReleaseDate,Rating,Poster,ImagePath,Description) VALUES (@Title,@Genre,@Director,@ReleaseDate,@Rating,@Poster,@ImagePath,@Description)";
                     using (SqlCommand cmd = new SqlCommand(sql, connection))
                     {
-                        MessageBox.Show("Execution");
+                       // MessageBox.Show("Execution");
                         cmd.Parameters.AddWithValue("@Title", movie.Title);
                         cmd.Parameters.AddWithValue("@Genre", movie.Genre);
                         cmd.Parameters.AddWithValue("@ReleaseDate", movie.ReleaseDate);
