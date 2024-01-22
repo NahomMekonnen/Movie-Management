@@ -19,6 +19,7 @@ namespace Movie_Management
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
+        private string tableName;
 
         public Home()
         {
@@ -37,6 +38,8 @@ namespace Movie_Management
             public static Color color1 = Color.FromArgb(172, 126, 241);
             public static Color color2 = Color.FromArgb(249,118,176);
             public static Color color3 = Color.FromArgb(253, 138, 114);
+            public static Color color4 = Color.FromArgb(37, 194, 68);
+            public static Color color5 = Color.FromArgb(173, 19, 2);
 
         }
 
@@ -99,20 +102,7 @@ namespace Movie_Management
             lblTitleChildForm.Text = childForm.Text;
 
         }
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender,RGBColors.color1);
-        }
-
-        private void iconButton2_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color2);
-        }
-
-        private void iconButton3_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color3);
-        }
+       
 
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -158,6 +148,55 @@ namespace Movie_Management
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAllMovies_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color1);
+            OpenChildForm(new AllMovies("Movies"));
+            tableName = "Movies";
+        }
+
+        private void btnWatchlist_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color2);
+            OpenChildForm(new AllMovies("Watchlist"));
+            tableName = "Watchlist";
+        }
+
+        private void btnWatched_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color3);
+            OpenChildForm(new AllMovies("Watched"));
+            tableName = "Watched";
+        }
+        
+        private void btnAddMovies_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChildForm(new Insert());
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            string warning = "Are you sure you want to log out? ";
+            ActivateButton(sender, RGBColors.color5);
+            ConfirmationDialog confirm = new ConfirmationDialog(warning);
+            DialogResult result = confirm.ShowDialog();
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                Login login = new Login();
+                login.Visible = true;
+            }
+            
+
+        }
+
+        private void btnReleaseDate_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AllMovies(tableName));
+
         }
     }
 }
