@@ -15,7 +15,7 @@ namespace Movie_Management
         public List<Image> Posters = new List<Image>();
         public List<PictureBox> Pictures = new List<PictureBox>();
 
-
+        //
         public void InsertMovies(string tableName, Movie movie)
         {
             try
