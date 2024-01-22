@@ -17,6 +17,7 @@ namespace Movie_Management
         public int Rating { get; set; }
         public Image Poster { get; set; }
         public string ImagePath { get; set; }
+        public string Description { get; set; }
         
     }
 }

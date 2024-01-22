@@ -82,6 +82,7 @@ namespace Movie_Management
             }
 
         }
+    
 
         private void OpenChildForm(Form childForm)
         {
@@ -138,6 +139,7 @@ namespace Movie_Management
                 WindowState = FormWindowState.Maximized;
             else
                 WindowState = FormWindowState.Normal;
+
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)

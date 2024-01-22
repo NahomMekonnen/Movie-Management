@@ -10,12 +10,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Linq;
+using System.Net.NetworkInformation;
 
 namespace Movie_Management
 {
+    public class DrawOnParentEventArgs : EventArgs
+    {
+       public string movieName {  get; set; }
+        public string tableName { get; set; }
+        public DrawOnParentEventArgs(string movieName)
+        {
+            this.movieName = movieName;
+
+        }
+    }
+
     public partial class AllMovies : Form
     {
-     
+        public event EventHandler<DrawOnParentEventArgs> DrawOnParentRequest;
+
         public string tableName;
         DatabaseConnection d= new DatabaseConnection();
         public AllMovies(string tableName)
@@ -74,7 +87,7 @@ namespace Movie_Management
             picBox.Size = new Size(120, 168);
             picBox.Location = new Point(12, 10);
             picBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
+     
            
             if (File.Exists(movie.ImagePath))
                 picBox.Image = Image.FromFile(movie.ImagePath);
@@ -92,9 +105,11 @@ namespace Movie_Management
             labelTitle.AutoSize = true;
             labelTitle.Tag = movie.Id;
             labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            labelTitle.Click += new EventHandler(label_Click);
+
 
                 //Create year label
-            Label labelYear;
+                Label labelYear;
             labelYear = new Label();
             labelYear.Name = String.Format("LblMovieYear{0}", movie.Id);
             labelYear.Text = movie.ReleaseDate.Year.ToString();
@@ -115,9 +130,17 @@ namespace Movie_Management
             }
         
         }
+        private void label_Click(object sender, EventArgs e)
+        {
+            string name = ((Label)sender).Text;
+            string table = tableName;
+            Form parentform = (Form)this.Parent.Parent;
 
+            MovieWindow movie = new MovieWindow(name,tableName);
+            parentform.Hide();
+        }
 
-
+       
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string searchText=txtSearch.Text.Trim();
@@ -131,7 +154,6 @@ namespace Movie_Management
                     if (movie.Title.Contains(searchText))
                     {
                        
-
                         matchingMovies.Add(movie);
                     }
 

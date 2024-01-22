@@ -89,7 +89,7 @@ namespace Movie_Management
                  movie.ReleaseDate = dateRelease.Value;
                  movie.Rating = (int)numRating.Value;
                  movie.Poster = Image.FromFile(txtPath.Text);
-     
+                 movie.Description=txtDescription.Text;
                  movie.ImagePath = txtPath.Text;
                 MessageBox.Show(movie.ImagePath);
             }
@@ -110,6 +110,7 @@ namespace Movie_Management
             txtGenre.Text = null;
             numRating.Value= 0;
             dateRelease.Value = DateTime.Now;
+            txtDescription.Text = null;
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
